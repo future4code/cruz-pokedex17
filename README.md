@@ -1,9 +1,9 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Amanda Andrade Lentez
+- Fabiana Genila Ramos Perira
+- Milena Cacau
 
 Link do Surge: www.link.com.br
 
