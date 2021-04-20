@@ -1,8 +1,11 @@
+import React, { useContext} from 'react'
 import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
 import {linkPokedex} from '../routes'
-import Header from '../components/header'
+import Header from '../components/header.js'
 import { Container, TituloPagina} from "../components/estilosCompoentes";
+import GlobalStateContext from '../global/GlobalStateContext'
+import PokemonCard from '../components/PokemonCard';
 
 const DivInputs = styled.div`
   display: flex;
@@ -57,11 +60,12 @@ const SelectFiltro = styled.select`
 const BoxCard = styled.div`
 `
 
-const Imagem = styled.div`
-`
+// const Imagem = styled.div`
+// `
 
 function Home() {
-    const history = useHistory()
+    // const { pokemons } = useContext(GlobalStateContext)
+    // const history = useHistory()
     
     const categorias = [
       'Bug',
@@ -93,9 +97,6 @@ function Home() {
 
           <DivInputs>
             <InputPesquisa type="text" placeholder="Pesquise um Pokémon pelo nome"></InputPesquisa>
-          {/* <option selected>Selecione</option>
-                <option value={"CRESCENTE"}>Crescente</option>
-                <option value={"DECRESCENTE"}>Decrescente</option> */}
 
             <SelectFiltro> 
               <option>Selecione uma categoria</option>
@@ -113,5 +114,21 @@ function Home() {
         </Container>
       </div>
     );
+
+    // console.log(pokemons)
+
+    // return (
+    //   <>
+    //       <header>
+    //         <button type="button" onClick={()=>linkPokedex(history)}>
+    //           Pokedex
+    //         </button>
+    //       </header>
+    //       <div>
+    //         {pokemons && pokemons.map((pokemon) => {
+    //           return <PokemonCard key={pokemon.name} pokemon={pokemon}/>
+    //         })}
+    //       </div>
+    //   </>
 }
 export default Home;
