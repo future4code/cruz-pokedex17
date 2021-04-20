@@ -6,9 +6,11 @@ import {
     Pokedex,
     Detalhes
 } from './pages'
+import GlobalState from './global/GlobalState';
 
 function App() {
   return (
+    <GlobalState>
     <Router>
       <Switch>
         <Route exact path='/' exact component={Home}/>
@@ -16,6 +18,7 @@ function App() {
         <Route path='/detalhes' exact component={Detalhes}/>
       </Switch>
     </Router>
+    </GlobalState>
   );
 }
 

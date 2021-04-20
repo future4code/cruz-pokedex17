@@ -1,8 +1,12 @@
+import React, { useContext} from 'react'
 import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
 import {linkPokedex} from '../routes'
 import Header from '../components/header'
 import { Container, TituloPagina} from "../components/estilosCompoentes";
+import GlobalStateContext from '../global/GlobalStateContext'
+import PokemonCard from '../components/PokemonCard';
+
 
 const DivInputs = styled.div`
   display: flex;
@@ -61,8 +65,8 @@ const Imagem = styled.div`
 `
 
 function Home() {
+    const { pokemons } = useContext(GlobalStateContext)
     const history = useHistory()
-    
     const categorias = [
       'Bug',
       'Dark',
@@ -83,8 +87,8 @@ function Home() {
       'Steel', 
       'Water',
   ]  
-
-    return (
+  
+  return (
       <div>
         <Header/>
         <Container $display='flex' $alignItems='center' $height='85vh' $flexFlow='column'>
@@ -112,6 +116,24 @@ function Home() {
 
         </Container>
       </div>
+
+// =======
+//     console.log(pokemons)
+
+//     return (
+//       <>
+//           <header>
+//             <button type="button" onClick={()=>linkPokedex(history)}>
+//               Pokedex
+//             </button>
+//           </header>
+//           <div>
+//             {pokemons && pokemons.map((pokemon) => {
+//               return <PokemonCard key={pokemon.name} pokemon={pokemon}/>
+//             })}
+//           </div>
+//       </>
+
     );
 }
 export default Home;
