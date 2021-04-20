@@ -97,9 +97,6 @@ function Home() {
 
           <DivInputs>
             <InputPesquisa type="text" placeholder="Pesquise um Pokémon pelo nome"></InputPesquisa>
-          {/* <option selected>Selecione</option>
-                <option value={"CRESCENTE"}>Crescente</option>
-                <option value={"DECRESCENTE"}>Decrescente</option> */}
 
             <SelectFiltro> 
               <option>Selecione uma categoria</option>
@@ -116,24 +113,22 @@ function Home() {
 
         </Container>
       </div>
-
-// =======
-//     console.log(pokemons)
-
-//     return (
-//       <>
-//           <header>
-//             <button type="button" onClick={()=>linkPokedex(history)}>
-//               Pokedex
-//             </button>
-//           </header>
-//           <div>
-//             {pokemons && pokemons.map((pokemon) => {
-//               return <PokemonCard key={pokemon.name} pokemon={pokemon}/>
-//             })}
-//           </div>
-//       </>
-
     );
+
+    // console.log(pokemons)
+
+    // return (
+    //   <>
+    //       <header>
+    //         <button type="button" onClick={()=>linkPokedex(history)}>
+    //           Pokedex
+    //         </button>
+    //       </header>
+    //       <div>
+    //         {pokemons && pokemons.map((pokemon) => {
+    //           return <PokemonCard key={pokemon.name} pokemon={pokemon}/>
+    //         })}
+    //       </div>
+    //   </>
 }
 export default Home;
