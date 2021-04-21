@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     width: ${(props) => props.$width || '80%'};  
     height:  ${(props) => props.$height || '100vh'};
+    min-height:  ${(props) => props.$minHeight};
     display: ${(props) => props.$display || 'block'};
     justify-content: ${(props) => props.$justifyContent || 'flex-start'};
     align-items: ${(props) => props.$alignItems || 'flex-start'};

@@ -1,0 +1,22 @@
+.ant-list {
+    width: 100%;
+};
+
+.ant-col {
+    padding: 0;    
+}
+
+.ant-row {
+    row-gap: 50px!important;
+}
+
+.ant-list-item {
+    height: 60vh!important;
+}
+
+.ant-card-body {
+    padding: 0;
+    height: 100%;
+    /* position: absolute; */
+}
+
