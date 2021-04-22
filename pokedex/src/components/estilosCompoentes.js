@@ -63,9 +63,9 @@ export const BoxImagem = styled.div`
 `
 
 export const ImagemPokemon = styled.img`
-  height: 60%;
+  height: 50%;
   object-fit: contain;
-  margin-bottom: 15%;
+  margin-bottom: 15vh;
 `
 
 export const BoxInfos = styled.div` 
