@@ -12,12 +12,12 @@
 }
 
 .ant-row {
-    row-gap: 10vh!important;
+    row-gap: 5vh!important;
 }
 
 
 .ant-list-item {
-    height: 65vh!important;
+    height: 70vh!important;
 }
 
 .ant-card-body {

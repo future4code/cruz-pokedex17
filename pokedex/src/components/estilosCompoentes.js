@@ -70,7 +70,7 @@ export const ImagemPokemon = styled.img`
 
 export const BoxInfos = styled.div` 
   width: 100%;
-  height: 30vh;
+  height: 35vh;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 3px #00000029;
   border-radius: 30px;
@@ -82,6 +82,15 @@ export const BoxInfos = styled.div`
   flex-flow: column;
 `
 
+export const InfosPokemon = styled.div` 
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+
+`
+
 export const NomePokemon = styled.div`
   font-family: 'Acme';
   font-size: 25px;
@@ -91,18 +100,43 @@ export const NomePokemon = styled.div`
 export const CategoriaPokemon = styled.p` 
   border: 4px solid ${(props) => props.$corBorda};/* será props */ 
   background-color: ${(props) => props.$corCategoria};
-  padding: 5px 18px 5px 18px;
+  padding: 3px 18px 3px 18px;
   border-radius: 100px;
   color: white;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
   margin-top: 10px;
-  margin-bottom: 40px;
 `
 
 export const BoxBotoes = styled.div` 
-  width: 90%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+`
+
+export const BotaoCard = styled.button` 
+    width: ${(props) => props.$width || 'auto'};
+    height:  ${(props) => props.$height || '50px'};
+    padding: ${(props) => props.$padding || 'auto'};
+    border: 1px solid ${(props) => props.$border || 'transparent'};
+    box-shadow: 0px 0px 5px ${(props) => props.$boxShadow || 'none'};
+    border-radius: 10px;
+    background-color: ${(props) => props.$backgroundColor || '#FFCB05'};
+    color: ${(props) => props.$color || 'white'};
+    font-size: ${(props) => props.$fontSize || '16px'};
+    font-family: ${(props) => props.$fontFamily || 'Poppins'};
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    :hover{
+        background-color: ${(props) => props.$backgroundHover || 'white'};
+        transform:'1.1';
+        font-weight: 600;
+        cursor: pointer;
+        transform: scale(${(props) => props.$scale || '1.1'});
+        color: ${(props) => props.$colorHover || 'white'};
+        border: 1px solid ${(props) => props.$borderHover || 'transparent'};
+    }
 `
