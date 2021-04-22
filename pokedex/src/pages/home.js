@@ -10,6 +10,7 @@ import PokemonCard from '../components/PokemonCard';
 import 'antd/dist/antd.css'
 import { List, Card } from 'antd';
 import '../components/antd.css'
+import {coresBotoes} from '../utils/functions'
 
 
 const DivInputs = styled.div`
@@ -62,19 +63,18 @@ const SelectFiltro = styled.select`
 `
 
 const ListaPokemons = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
+  width: 100%;
 `
 
 const BoxCard = styled.div`
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: 50px;
 `
 
 const BoxImagem = styled.div` 
   width: 100%;
-  height: 30vh;
-  background-color: red;  /*será alterado para props quando puxarmos a api*/
+  height: 50vh;
+  background-color: ${(props) => props.$corBotao};  /*será alterado para props quando puxarmos a api*/
   border-radius: 30px 30px 0 0;
   box-shadow: 0px 3px 3px #00000029;
   display: flex;
@@ -84,8 +84,9 @@ const BoxImagem = styled.div`
 `
 
 const ImagemPokemon = styled.img`
-  width: 50%;
-  object-fit: contain;  
+  height: 60%;
+  object-fit: contain;
+  margin-bottom: 15%  
 `
 
 const BoxInfos = styled.div` 
@@ -95,7 +96,7 @@ const BoxInfos = styled.div`
   box-shadow: 0px 3px 3px #00000029;
   border-radius: 30px;
   position: absolute;
-  bottom: -20vh;
+  bottom: -15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,24 +132,24 @@ function Home() {
     const { pokemons, setPokemons, pokedex, setPokedex } = useContext(GlobalStateContext)
     const history = useHistory()
     const categorias = [
-      'Bug',
-      'Dark',
-      'Dragon',
-      'Electric',
-      'Fairy',
-      'Fighting',
-      'Fire',
-      'Flying',
-      'Ghost',
-      'Grass',
-      'Ground',
-      'Ice',
-      'Normal',
-      'Poison', 
-      'Psychic',
-      'Rock', 
-      'Steel', 
-      'Water',
+      'bug',
+      'dark',
+      'dragon',
+      'electric',
+      'fairy',
+      'fighting',
+      'fire',
+      'flying',
+      'ghost',
+      'grass',
+      'ground',
+      'ice',
+      'normal',
+      'poison', 
+      'psychic',
+      'rock', 
+      'steel', 
+      'water',
   ]  
 
   const addPokemonPokedex = (pokemon) => {
@@ -217,13 +218,14 @@ function Home() {
 
         <ListaPokemons>
           <List
+            pagination={{pageSize: 6}}
             grid={{ gutter: 100, column: 3 }}
             dataSource={pokemons}
             renderItem={(pokemon) => (
               <List.Item>
                 <Card>
                   <BoxCard>
-                    <BoxImagem>
+                    <BoxImagem $corBotao={coresBotoes(pokemon.types.[0].type.name)}>
                       <ImagemPokemon src={pokemon.sprites.front_default} />
                     </BoxImagem>
 
@@ -233,8 +235,8 @@ function Home() {
                         {pokemon.types.[0].type.name}
                       </CategoriaPokemon>
                       <BoxBotoes>
-                        <Botao $margin='0px 5px 0px 0px' $height='55px' onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</Botao>
-                        <Botao $margin='0px 0px 0px 5px' $height='55px' onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</Botao>
+                        <Botao $padding='0px 10px 0px 10px' $width='45%' $height='55px' onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</Botao>
+                        <Botao $padding='0px 10px 0px 10px' $width='45%' $height='55px' onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</Botao>
                       </BoxBotoes>
                     </BoxInfos>
                   </BoxCard>
