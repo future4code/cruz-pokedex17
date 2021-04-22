@@ -16,6 +16,7 @@ export const Botao = styled.button`
     height:  ${(props) => props.$height || '50px'};
     padding: ${(props) => props.$padding || 'auto'};
     border: ${(props) => props.$border || 'none'};
+    margin: ${(props) => props.$margin || 'auto'};
     border-radius: 100px;
     background-color: ${(props) => props.$backgroundColor || '#FFCB05'};
     color: ${(props) => props.$color || 'white'};

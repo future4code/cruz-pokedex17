@@ -1,7 +1,7 @@
 import React, { useContext} from 'react'
 import { useHistory } from "react-router-dom";
 import styled from 'styled-components'
-import {linkPokedex} from '../routes'
+import {linkDetalhes, linkPokedex} from '../routes'
 import Header from '../components/header'
 import imagemPokemon from  '../imgs/lista-pokemons/pikachu.png'
 import { Botao, Container, TituloPagina} from "../components/estilosCompoentes";
@@ -105,17 +105,20 @@ const BoxInfos = styled.div`
 const NomePokemon = styled.div`
   font-family: 'Acme';
   font-size: 25px;
+  text-transform: capitalize;
 `
 
 const CategoriaPokemon = styled.p` 
   border: 4px solid pink;/* será props */ 
   background-color: red;/* será props */ 
-  padding: 7px 30px 7px 30px;
+  padding: 5px 18px 5px 18px;
   border-radius: 100px;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 40px;
 `
 
 const BoxBotoes = styled.div` 
@@ -125,7 +128,7 @@ const BoxBotoes = styled.div`
 `
 
 function Home() {
-    const { pokemons } = useContext(GlobalStateContext)
+    const { pokemons, setPokemons, pokedex, setPokedex } = useContext(GlobalStateContext)
     const history = useHistory()
     const categorias = [
       'Bug',
@@ -148,20 +151,44 @@ function Home() {
       'Water',
   ]  
 
-  const data = [ /* NÃO APAGAR, UTILIZAREMOS ESTA PARTE ASSIM QUE PUXARMOS OS DADOS DA API*/ 
-    {
-      title: 'Title 1',
-    },
-    {
-      title: 'Title 2',
-    },
-    {
-      title: 'Title 3',
-    },
-    {
-      title: 'Title 4',
-    },
-  ];
+  const addPokemonPokedex = (pokemon) => {
+            const pokemonIndex = pokemons.findIndex((item) => 
+            item.name === pokemon.name) 
+            //retorna o primeiro index da lista cujo valor do item seja o mesmo da props
+    
+            const newPokeList = [...pokemons]
+            newPokeList.splice(pokemonIndex, 1) //adiciona na array um item
+            const orderedList = newPokeList.sort((a, b) => {
+                return a.id - b.id
+                //retorna a lista ordenada em crescente, de acordo com o id
+            })
+    
+            const newPokedexList = [...pokedex, pokemon]
+            const orderedPokedex = newPokedexList.sort((a, b) => {
+                return a.id - b.id
+            }) //retorna a lista do Pokédex ordenada crescente, de acordo com id
+    
+            setPokemons(orderedList)
+            setPokedex(orderedPokedex)
+        }
+    
+        const removePokemons = (pokemon) => {
+            const pokemonIndex = pokedex.findIndex((item) => 
+            item.name === pokemon.name)
+            
+            const newPokedexList = [...pokedex]
+            newPokedexList.splice(pokedex, 1)
+            const orderPokedex = newPokedexList.sort((a, b) => {
+                return a.id - b.id
+            })
+    
+            const newPokemonList = [...pokemons, pokemon]
+            const orderPokemon = newPokemonList.sort((a, b) => {
+                return a.id - b.id
+            })   
+            setPokedex(orderPokedex)
+            setPokemons(orderPokemon)
+        }
   
   return (
     <div>
@@ -191,35 +218,23 @@ function Home() {
         <ListaPokemons>
           <List
             grid={{ gutter: 100, column: 3 }}
-            dataSource={data}
-            renderItem={(item) => (
+            dataSource={pokemons}
+            renderItem={(pokemon) => (
               <List.Item>
                 <Card>
                   <BoxCard>
                     <BoxImagem>
-                      <ImagemPokemon src={imagemPokemon} />
+                      <ImagemPokemon src={pokemon.sprites.front_default} />
                     </BoxImagem>
 
                     <BoxInfos>
-                      <div>
-                        {pokemons &&
-                          pokemons.map((pokemon) => {
-                            return (
-                              <PokemonCard
-                                key={pokemon.name}
-                                pokemon={pokemon}
-                              />
-                            );
-                          })}
-                      </div>
-                      <NomePokemon>Pikachú</NomePokemon>
+                      <NomePokemon>{pokemon.name}</NomePokemon>
                       <CategoriaPokemon /*será props*/>
-                        Eletric{" "}
+                        {pokemon.types.[0].type.name}
                       </CategoriaPokemon>
-
                       <BoxBotoes>
-                        <Botao>ADICIONAR À POKEDEX</Botao>
-                        <Botao>DETALHES</Botao>
+                        <Botao $margin='0px 5px 0px 0px' $height='55px' onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</Botao>
+                        <Botao $margin='0px 0px 0px 5px' $height='55px' onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</Botao>
                       </BoxBotoes>
                     </BoxInfos>
                   </BoxCard>
