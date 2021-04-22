@@ -164,61 +164,74 @@ function Home() {
   ];
   
   return (
-      <div>
-        <Header/>
-        <Container $display='flex' $alignItems='center' $minHeight='85vh' $flexFlow='column'>
-          
-          <TituloPagina>Pokémons in the wild</TituloPagina>
+    <div>
+      <Header />
+      <Container
+        $display="flex"
+        $alignItems="center"
+        $minHeight="85vh"
+        $flexFlow="column"
+      >
+        <TituloPagina>Pokémons in the wild</TituloPagina>
 
-          <DivInputs>
-            <InputPesquisa type="text" placeholder="Pesquise um Pokémon pelo nome"></InputPesquisa>
+        <DivInputs>
+          <InputPesquisa
+            type="text"
+            placeholder="Pesquise um Pokémon pelo nome"
+          ></InputPesquisa>
 
-            <SelectFiltro> 
-              <option>Selecione uma categoria</option>
-              {categorias.map((categoria) => 
-              <option /*value={categoria}*/ >{categoria}</option>
-              )}
-            </SelectFiltro>
-          </DivInputs>
+          <SelectFiltro>
+            <option>Selecione uma categoria</option>
+            {categorias.map((categoria) => (
+              <option /*value={categoria}*/>{categoria}</option>
+            ))}
+          </SelectFiltro>
+        </DivInputs>
 
-          <ListaPokemons> 
-            <List
-                grid={{ gutter: 100, column: 3 }}
-                dataSource={data}
-                renderItem={item => (
-            <List.Item>
+        <ListaPokemons>
+          <List
+            grid={{ gutter: 100, column: 3 }}
+            dataSource={data}
+            renderItem={(item) => (
+              <List.Item>
+                <Card>
+                  <BoxCard>
+                    <BoxImagem>
+                      <ImagemPokemon src={imagemPokemon} />
+                    </BoxImagem>
 
-            <Card>
-              <BoxCard>
-                <BoxImagem>
-                  <ImagemPokemon src={imagemPokemon}/>
-                </BoxImagem>
+                    <BoxInfos>
+                      <div>
+                        {pokemons &&
+                          pokemons.map((pokemon) => {
+                            return (
+                              <PokemonCard
+                                key={pokemon.name}
+                                pokemon={pokemon}
+                              />
+                            );
+                          })}
+                      </div>
+                      <NomePokemon>Pikachú</NomePokemon>
+                      <CategoriaPokemon /*será props*/>
+                        Eletric{" "}
+                      </CategoriaPokemon>
 
-                <BoxInfos>
-                  <NomePokemon>Pikachú</NomePokemon>
-                  <CategoriaPokemon /*será props*/ >Eletric </CategoriaPokemon> 
-
-                  <BoxBotoes>
-                    <Botao>ADICIONAR À POKEDEX</Botao>
-                    <Botao>DETALHES</Botao>
-
-                  </BoxBotoes>
-
-                </BoxInfos>
-
-              </BoxCard>
-              
-            
-            </Card>
-
-            </List.Item>
+                      <BoxBotoes>
+                        <Botao>ADICIONAR À POKEDEX</Botao>
+                        <Botao>DETALHES</Botao>
+                      </BoxBotoes>
+                    </BoxInfos>
+                  </BoxCard>
+                </Card>
+              </List.Item>
             )}
-            />,
-          </ListaPokemons>
-
-        </Container>
-      </div>
-    );
+          />
+          ,
+        </ListaPokemons>
+      </Container>
+    </div>
+  );
 
     // console.log(pokemons)
 
