@@ -4,12 +4,13 @@ import styled from 'styled-components'
 import {linkDetalhes, linkPokedex} from '../routes'
 import Header from '../components/header'
 import imagemPokemon from  '../imgs/lista-pokemons/pikachu.png'
-import { Botao, Container, TituloPagina} from "../components/estilosCompoentes";
+import { Container, TituloPagina, ListaPokemons, InfosPokemon, BoxCard, BoxImagem, ImagemPokemon, BoxInfos, NomePokemon, CategoriaPokemon, BoxBotoes, BotaoCard} from "../components/estilosCompoentes";
 import GlobalStateContext from '../global/GlobalStateContext'
 import PokemonCard from '../components/PokemonCard';
 import 'antd/dist/antd.css'
 import { List, Card } from 'antd';
 import '../components/antd.css'
+import {corBase, corAux} from '../utils/functions'
 
 
 const DivInputs = styled.div`
@@ -61,94 +62,28 @@ const SelectFiltro = styled.select`
     }
 `
 
-const ListaPokemons = styled.div`
-  margin-top: 50px;
-`
-
-const BoxCard = styled.div`
-  width: 100%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-`
-
-const BoxImagem = styled.div` 
-  width: 100%;
-  height: 30vh;
-  background-color: red;  /*será alterado para props quando puxarmos a api*/
-  border-radius: 30px 30px 0 0;
-  box-shadow: 0px 3px 3px #00000029;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 30px;
-`
-
-const ImagemPokemon = styled.img`
-  width: 50%;
-  object-fit: contain;  
-`
-
-const BoxInfos = styled.div` 
-  width: 100%;
-  height: 30vh;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 3px #00000029;
-  border-radius: 30px;
-  position: absolute;
-  bottom: -20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-`
-
-const NomePokemon = styled.div`
-  font-family: 'Acme';
-  font-size: 25px;
-  text-transform: capitalize;
-`
-
-const CategoriaPokemon = styled.p` 
-  border: 4px solid pink;/* será props */ 
-  background-color: red;/* será props */ 
-  padding: 5px 18px 5px 18px;
-  border-radius: 100px;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 40px;
-`
-
-const BoxBotoes = styled.div` 
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-`
-
 function Home() {
     const { pokemons, setPokemons, pokedex, setPokedex } = useContext(GlobalStateContext)
     const history = useHistory()
     const categorias = [
-      'Bug',
-      'Dark',
-      'Dragon',
-      'Electric',
-      'Fairy',
-      'Fighting',
-      'Fire',
-      'Flying',
-      'Ghost',
-      'Grass',
-      'Ground',
-      'Ice',
-      'Normal',
-      'Poison', 
-      'Psychic',
-      'Rock', 
-      'Steel', 
-      'Water',
+      'bug',
+      'dark',
+      'dragon',
+      'electric',
+      'fairy',
+      'fighting',
+      'fire',
+      'flying',
+      'ghost',
+      'grass',
+      'ground',
+      'ice',
+      'normal',
+      'poison', 
+      'psychic',
+      'rock', 
+      'steel', 
+      'water',
   ]  
 
   const addPokemonPokedex = (pokemon) => {
@@ -217,25 +152,28 @@ function Home() {
 
         <ListaPokemons>
           <List
+            pagination={{pageSize: 6}}
             grid={{ gutter: 100, column: 3 }}
             dataSource={pokemons}
             renderItem={(pokemon) => (
               <List.Item>
                 <Card>
                   <BoxCard>
-                    <BoxImagem>
+                    <BoxImagem $corFundo={corAux(pokemon.types.[0].type.name)}>
                       <ImagemPokemon src={pokemon.sprites.front_default} />
                     </BoxImagem>
 
                     <BoxInfos>
-                      <NomePokemon>{pokemon.name}</NomePokemon>
-                      <CategoriaPokemon /*será props*/>
-                        {pokemon.types.[0].type.name}
-                      </CategoriaPokemon>
-                      <BoxBotoes>
-                        <Botao $margin='0px 5px 0px 0px' $height='55px' onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</Botao>
-                        <Botao $margin='0px 0px 0px 5px' $height='55px' onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</Botao>
-                      </BoxBotoes>
+                      <InfosPokemon>
+                        <NomePokemon>{pokemon.name}</NomePokemon>
+                        <CategoriaPokemon $corCategoria={corBase(pokemon.types.[0].type.name)} $corBorda={corAux(pokemon.types.[0].type.name)} /*será props*/>
+                          {pokemon.types.[0].type.name}
+                        </CategoriaPokemon>
+                        <BoxBotoes>
+                          <BotaoCard $padding='0px 10px 0px 10px' $width='47%' $height='55px' $scale='1.09' $boxShadow={corBase(pokemon.types.[0].type.name)} $backgroundColor={corAux(pokemon.types.[0].type.name)} $borderHover={corAux(pokemon.types.[0].type.name)} $colorHover={corAux(pokemon.types.[0].type.name)} onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</BotaoCard>
+                          <BotaoCard $padding='0px 10px 0px 10px' $width='47%' $height='55px' $scale='1.09' $boxShadow={corBase(pokemon.types.[0].type.name)} $backgroundColor='transparent' $border={corAux(pokemon.types.[0].type.name)} $color={corAux(pokemon.types.[0].type.name)} $backgroundHover={corAux(pokemon.types.[0].type.name)} onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</BotaoCard>
+                        </BoxBotoes>
+                      </InfosPokemon>
                     </BoxInfos>
                   </BoxCard>
                 </Card>
