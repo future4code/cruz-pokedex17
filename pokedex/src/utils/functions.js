@@ -1,5 +1,4 @@
 export const corBase = (categoria) => {
-    console.log(categoria)
     switch(categoria) {
         case 'bug':
             return '#1C4B27'
@@ -61,7 +60,6 @@ export const corBase = (categoria) => {
 }
 
 export const corAux = (categoria) => {
-    console.log(categoria)
     switch(categoria) {
         case 'bug':
             return '#3C9950'
