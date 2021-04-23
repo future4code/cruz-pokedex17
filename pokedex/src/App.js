@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route exact path='/' exact component={Home}/>
         <Route path='/pokedex' exact component={Pokedex}/>
-        <Route path='/detalhes' exact component={Detalhes}/>
+        <Route path='/detalhes/:name/:PokedexScreen?' exact component={Detalhes}/>
       </Switch>
     </Router>
     </GlobalState>

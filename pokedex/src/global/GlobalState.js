@@ -7,6 +7,8 @@ const GlobalState = (props) => {
     const [pokemonNames, setPokemonNames] = useState([])
     const [pokemons, setPokemons] = useState([])
     const [pokedex, setPokedex] = useState([])
+    console.log(pokemons)
+    console.log(pokemonNames)
 
     useEffect(() => {
         getPokemonByName()
