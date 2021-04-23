@@ -64,6 +64,7 @@ const SelectFiltro = styled.select`
 
 function Home() {
     const { pokemons, setPokemons, pokedex, setPokedex } = useContext(GlobalStateContext)
+    console.log(pokedex)
     const history = useHistory()
     const categorias = [
       'bug',
@@ -105,7 +106,7 @@ function Home() {
     
             setPokemons(orderedList)
             setPokedex(orderedPokedex)
-        }
+          }
     
         const removePokemons = (pokemon) => {
             const pokemonIndex = pokedex.findIndex((item) => 
@@ -136,7 +137,7 @@ function Home() {
       >
         <TituloPagina>Pokémons in the wild</TituloPagina>
 
-        <DivInputs>
+        {/* <DivInputs>
           <InputPesquisa
             type="text"
             placeholder="Pesquise um Pokémon pelo nome"
@@ -145,10 +146,10 @@ function Home() {
           <SelectFiltro>
             <option>Selecione uma categoria</option>
             {categorias.map((categoria) => (
-              <option /*value={categoria}*/>{categoria}</option>
+              <option>{categoria}</option>
             ))}
           </SelectFiltro>
-        </DivInputs>
+        </DivInputs> */}
 
         <ListaPokemons>
           <List
@@ -170,7 +171,8 @@ function Home() {
                           {pokemon.types.[0].type.name}
                         </CategoriaPokemon>
                         <BoxBotoes>
-                          <BotaoCard $padding='0px 10px 0px 10px' $width='47%' $height='55px' $scale='1.09' $boxShadow={corBase(pokemon.types.[0].type.name)} $backgroundColor={corAux(pokemon.types.[0].type.name)} $borderHover={corAux(pokemon.types.[0].type.name)} $colorHover={corAux(pokemon.types.[0].type.name)} onClick={pokedex ? () => removePokemons(pokemon) : ()=>addPokemonPokedex(pokemon)}>{pokedex ? 'REMOVER DA POKEDEX' : 'ADICIONAR À POKEDEX'}</BotaoCard>
+                          <BotaoCard $padding='0px 10px 0px 10px' $width='47%' $height='55px' $scale='1.09' $boxShadow={corBase(pokemon.types.[0].type.name)} $backgroundColor={corAux(pokemon.types.[0].type.name)} $borderHover={corAux(pokemon.types.[0].type.name)} $colorHover={corAux(pokemon.types.[0].type.name)} onClick={()=>addPokemonPokedex(pokemon)}>ADICIONAR À POKEDEX</BotaoCard>
+
                           <BotaoCard $padding='0px 10px 0px 10px' $width='47%' $height='55px' $scale='1.09' $boxShadow={corBase(pokemon.types.[0].type.name)} $backgroundColor='transparent' $border={corAux(pokemon.types.[0].type.name)} $color={corAux(pokemon.types.[0].type.name)} $backgroundHover={corAux(pokemon.types.[0].type.name)} onClick={()=>linkDetalhes(history, pokemon.name)}>MAIS INFORMAÇÕES</BotaoCard>
                         </BoxBotoes>
                       </InfosPokemon>

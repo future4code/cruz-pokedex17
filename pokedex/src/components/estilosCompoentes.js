@@ -39,6 +39,7 @@ export const TituloPagina = styled.h1`
     font-size: 55px;
     color: #3267B2;
     margin-top: 80px;  
+    text-transform: ${(props) => props.$textTransform || 'none'};
 `
 
 export const ListaPokemons = styled.div`

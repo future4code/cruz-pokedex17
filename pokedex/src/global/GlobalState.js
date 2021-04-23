@@ -18,7 +18,7 @@ const GlobalState = (props) => {
             axios.get(`${BASE_URL}/pokemon/${item.name}`)
             .then((res) => {
                 newListPokemon.push(res.data)
-                if (newListPokemon.length === 20) {
+                if (newListPokemon.length === 900) {
                     const orderList = newListPokemon.sort((a, b) => {
                         return a.id - b.id
                     })
@@ -32,7 +32,7 @@ const GlobalState = (props) => {
     },[pokemonNames])
 
     const getPokemonByName = () => {
-        axios.get(`${BASE_URL}/pokemon?limit=20&offset=0`)
+        axios.get(`${BASE_URL}/pokemon?limit=900&offset=0`)
         .then((res) => {
             setPokemonNames(res.data.results)
         })

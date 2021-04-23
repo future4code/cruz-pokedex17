@@ -131,9 +131,9 @@ function Pokedex() {
         $minHeight="85vh"
         $flexFlow="column"
       >
-        <TituloPagina>Pokémons in the wild</TituloPagina>
+        <TituloPagina>Minha Pokedéx</TituloPagina>
 
-        <DivInputs>
+        {/* <DivInputs>
           <InputPesquisa
             type="text"
             placeholder="Pesquise um Pokémon pelo nome"
@@ -142,16 +142,16 @@ function Pokedex() {
           <SelectFiltro>
             <option>Selecione uma categoria</option>
             {categorias.map((categoria) => (
-              <option /*value={categoria}*/>{categoria}</option>
+              <option>{categoria}</option>
             ))}
           </SelectFiltro>
-        </DivInputs>
+        </DivInputs> */}
 
         <ListaPokemons>
           <List
             pagination={{pageSize: 6}}
             grid={{ gutter: 100, column: 3 }}
-            dataSource={pokemons}
+            dataSource={pokedex}
             renderItem={(pokemon) => (
               <List.Item>
                 <Card>

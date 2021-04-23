@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import styled from 'styled-components'
 import { Container, Botao} from '../components/estilosCompoentes'
 import logo from  '../imgs/header/logo.png'
@@ -25,6 +25,7 @@ const Logo = styled.img`
 function Header() {
 
     const history = useHistory()
+    const { pathname } = useLocation()
 
     return(
         <BoxHeader>
@@ -32,7 +33,7 @@ function Header() {
 
                 <LogoBotao onClick={()=>linkHome(history)}><Logo src={logo}></Logo></LogoBotao>
                 
-                <Botao onClick={()=>linkPokedex(history)} $fontFamily='Acme' $fontSize='20px' $fontSize='25px' $padding='25px 40px 25px 40px'>Minha Pokedéx</Botao>
+                <Botao onClick={pathname == '/pokedex' ? ()=>linkHome(history) : ()=>linkPokedex(history)} $fontFamily='Acme' $fontSize='20px' $fontSize='25px' $padding='25px 40px 25px 40px'>{pathname == '/pokedex' ? 'Voltar a home' : 'Minha Pokedéx'}</Botao>
 
             </Container>
         </BoxHeader>

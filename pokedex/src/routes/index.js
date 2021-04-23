@@ -6,6 +6,6 @@ export const linkPokedex = (history) => {
     history.push('/pokedex')
 }
 
-export const linkDetalhes = (history) =>  {
-    history.push('/detalhes')
+export const linkDetalhes = (history, nome) =>  {
+    history.push('/detalhes/'+nome)
 }
