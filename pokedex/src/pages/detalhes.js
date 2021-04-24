@@ -11,6 +11,7 @@ import {corBase, corAux} from '../utils/functions'
 import 'antd/dist/antd.css'
 import { Slider } from 'antd';
 import '../components/antd.css'
+import { MicNone } from '@material-ui/icons'
 
 const DivDetalhes = styled.div` 
   width: 100%;
@@ -44,25 +45,40 @@ const FotoPokemom = styled.img`
 
 const Flex = styled.div`
   display: flex;
-  width: 100%;
+  justify-content: center;
+  margin: 1em;
+  width: 25vw;
   .ant-slider{
     flex: 5;
   }
 `
 
 const NomeStat = styled.label`
-  color: green;
+  // color: green;
   flex: 2;
   text-transform: capitalize;
+  font-size: 12px;
 `
 
 const NumeroStat = styled.label`
-  color: green;
+  // color: green;
   flex: 1;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #c3c3c3;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align:  center;
+  vertical-align: center;
+  height: 4vh;
 `
 
 const DivGrafico = styled.div`
   background: #f9f9f9;
+  border-radius: 25px;
+  margin-top: 3vh;
 `
 
 
@@ -131,8 +147,8 @@ function Detalhes() {
                 </DivFotosPokemons>
                 <DivGrafico>
                   <Flex>
-                    <button onClick={() => changeActive('stats')}>STATS</button>
-                    <button onClick={() => changeActive('moves')}>MOVES</button>
+                    <button onClick={() => changeActive('stats')} style={{borderBottom: "3px solid", borderTop: "0px", borderLeft: "0px", borderRight: "0px"}} $backgroundColor={corBase(selectedPokemons.types.[0].type.name)}>STATS</button>
+                    <button onClick={() => changeActive('moves')} style={{borderBottom: "3px solid green", borderTop: "0px", borderLeft: "0px", borderRight: "0px"}}>MOVES</button>
                   </Flex>
                     {active ? 
                     selectedPokemons.stats.map((stat) => 
