@@ -39,9 +39,9 @@ Projeto de um Pokédex, utilizando a API [PokéAPI](https://pokeapi.co/).
 
 ## Publicação
 
-~~Projeto publicado no Surge:~~
+Projeto publicado no Surge:
 
-~~[Surge](#)~~
+labedex-17.surge.sh
 
 ## Integrantes do grupo
 
