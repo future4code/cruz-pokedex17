@@ -107,7 +107,7 @@ export const CategoriaPokemon = styled.p`
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: ${(props) => props.$marginTop || '10px'};
 `
 
 export const BoxBotoes = styled.div` 
