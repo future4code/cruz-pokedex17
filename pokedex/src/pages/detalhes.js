@@ -5,13 +5,13 @@ import { BASE_URL } from '../constants/URL'
 import styled from 'styled-components'
 import {linkHome} from '../routes'
 import Header from '../components/header'
-import { Container, TituloPagina} from "../components/estilosCompoentes";
+import { Container, TituloPagina, CategoriaPokemon} from "../components/estilosCompoentes";
 import GlobalStateContext from '../global/GlobalStateContext'
 import {corBase, corAux} from '../utils/functions'
 import 'antd/dist/antd.css'
 import { Slider } from 'antd';
 import '../components/antd.css'
-import { MicNone } from '@material-ui/icons'
+// import { MicNone } from '@material-ui/icons'
 
 const DivDetalhes = styled.div` 
   width: 100%;
@@ -78,7 +78,8 @@ const NumeroStat = styled.label`
 const DivGrafico = styled.div`
   background: #f9f9f9;
   border-radius: 25px;
-  margin-top: 3vh;
+  margin-top: 50px;
+  margin-bottom: 10vh;
 `
 
 
@@ -145,6 +146,12 @@ function Detalhes() {
                     <CirculoFoto $backgroundColor={corBase(selectedPokemons.types.[0].type.name)}><FotoPokemom src={selectedPokemons.sprites.front_default}/></CirculoFoto>
                     <CirculoFoto $backgroundColor={corBase(selectedPokemons.types.[0].type.name)}><FotoPokemom src={selectedPokemons.sprites.back_default}/></CirculoFoto>
                 </DivFotosPokemons>
+
+
+                <CategoriaPokemon $marginTop='50px' $corCategoria={corBase(selectedPokemons.types.[0].type.name)} $corBorda={corAux(selectedPokemons.types.[0].type.name)}>
+                          {selectedPokemons.types.[0].type.name}
+                </CategoriaPokemon>
+                        
                 <DivGrafico>
                   <Flex>
                     <button onClick={() => changeActive('stats')} style={{borderBottom: "3px solid", borderTop: "0px", borderLeft: "0px", borderRight: "0px"}} $backgroundColor={corBase(selectedPokemons.types.[0].type.name)}>STATS</button>
