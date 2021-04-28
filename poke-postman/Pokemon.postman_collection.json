@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "d53b66da-558a-4dfa-bf9e-31726ee1d9ce",
+		"name": "Pokemon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pokemon By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/:id",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Pega informações dos Pokemons pelo ID. Retorna informações como Types, Height, Weight, Abilities, Base Stats, Moves e etc"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/:name",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name",
+							"value": "bulbasaur"
+						}
+					]
+				},
+				"description": "Pega as informações dos Pokemons pelo nome. Retorna informações como Types, Height, Weight, Abilities, Base Stats, Moves e etc"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon By Page Limit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/?limit=25",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "25"
+						}
+					]
+				},
+				"description": "Pega Pokemons limitando a quantidade de 25 Pokemons por Página"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Total Pokemon List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon"
+					]
+				},
+				"description": "Pega a lista com o total existente de Pokemons"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Type By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/type/:id",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"type",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Pega lista de Pokemons pelo tipo. \nEndpoint Type. \nRetorna os tipos de Pokemon como Normal, Poison, Grass e etc.\nTipos são propriedades de Pokémon e seus movimentos. Cada tipo tem três propriedades: \na)contra quais tipos de Pokémon é supereficaz, \nb)contra quais tipos de Pokémon não é muito eficaz e \nc)contra quais tipos de Pokémon é totalmente ineficaz."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Species By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon-species/:id",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon-species",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Pega lista de Pokemons pela Espécie (Species). \nParametro: ID\nEndpoint Pokemon Species. \nUma espécie de Pokémon forma a base de pelo menos um Pokémon. Os atributos de uma espécie de Pokémon são compartilhados por todas as variedades de Pokémon dentro da espécie. Um bom exemplo é Wormadam; Wormadam é a espécie que pode ser encontrada em três variedades diferentes, Wormadam-Trash, Wormadam-Sandy e Wormadam-Plant."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Stats By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/stat/:id",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"stat",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Pega lista de Pokemons pelas Estatísticas (Stats). \nParametro: Id\nEndpoint Stats. \nAs estatísticas determinam certos aspectos das batalhas. Cada Pokémon tem um valor para cada estatística que aumenta conforme eles ganham níveis e pode ser alterado momentaneamente por efeitos em batalhas."
+			},
+			"response": []
+		}
+	]
+}

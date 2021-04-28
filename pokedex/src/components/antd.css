@@ -1,0 +1,31 @@
+/* .ant-spin-container {
+    width: 100%;
+} */
+
+.ant-list {
+    margin-top: 5vh;
+    width: 100%!important;
+};
+
+.ant-col {
+    padding: 0!important;    
+}
+
+.ant-row {
+    row-gap: 5vh!important;
+}
+
+
+.ant-list-item {
+    height: 70vh!important;
+}
+
+.ant-card-body {
+    padding: 0;
+    height: 100%;
+    /* position: absolute; */
+}
+
+.ant-card {
+    border: none!important;
+}
